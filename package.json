@@ -1,0 +1,26 @@
+{
+  "name": "avalanche-price-api",
+  "email": "james-martin.ta@outlook.fr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesMartin-Ta/avalanche-price-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesMartin-Ta/avalanche-price-api/issues"
+  },
+  "homepage": "https://github.com/JamesMartin-Ta/avalanche-price-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "web3": "^1.3.6"
+  }
+}
