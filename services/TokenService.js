@@ -3,15 +3,15 @@ var Web3 = require('web3');
   'https://avalanche--mainnet--rpc.datahub.figment.io/apikey/7b5e1b3b8dbfec30ea0b7af5e3548899/ext/bc/C/rpc'
 ); */
 var w3 = new Web3('https://api.avax.network/ext/bc/C/rpc');
-var avaxABI = require('../assets/avaxABI.json');
+var usdtABI = require('../assets/usdtABI.json');
 var erc20ABI = require('../assets/ERC20.json');
 
 module.exports = {
-  getPrice: function (adress = '', callback) {
+  getPrice: function (address, callback) {
     /* get pool liquidty address */
-    liquidityContract = new w3.eth.Contract(
-      avaxABI,
-      w3.utils.toChecksumAddress('0x9ee0a4e21bd333a6bb2ab298194320b8daa26516')
+    let liquidityContract = new w3.eth.Contract(
+      usdtABI,
+      w3.utils.toChecksumAddress(address)
     );
 
     /* get reserve of each token of given pool */
