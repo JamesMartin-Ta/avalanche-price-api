@@ -1,7 +1,4 @@
 var Web3 = require('web3');
-/* var w3 = new Web3(
-  'https://avalanche--mainnet--rpc.datahub.figment.io/apikey/7b5e1b3b8dbfec30ea0b7af5e3548899/ext/bc/C/rpc'
-); */
 var w3 = new Web3('https://api.avax.network/ext/bc/C/rpc');
 var usdtABI = require('../assets/usdtABI.json');
 var erc20ABI = require('../assets/ERC20.json');
