@@ -11,16 +11,36 @@ app.post('/avalanche/price/usdt', (req, res) => {
       req.body.targetTokenSymbol,
       req.body.targetTokenAndUSDTPoolABI,
       function (response) {
-        res.send(response);
+        res.send(
+          callback(null, {
+            statusCode: 200,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'text/plain',
+              'Access-Control-Allow-Credentials': true
+            },
+            body: response
+          })
+        );
       }
     );
-  } catch (e) {
-    res.send(e);
+  } catch (error) {
+    res.send(
+      callback(null, {
+        statusCode: error.statusCode || 501,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'text/plain',
+          'Access-Control-Allow-Credentials': true
+        },
+        body: error.message
+      })
+    );
   }
 });
 
 app.get('/', (req, res) => {
-  res.send("Welcome to avalanche-price-api by JamesMartin-Ta");
+  res.send('Welcome to avalanche-price-api by JamesMartin-Ta');
 });
 
 app.listen(process.env.PORT || 5000, () => {
