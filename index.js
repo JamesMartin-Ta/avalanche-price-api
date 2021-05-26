@@ -6,6 +6,12 @@ app.use(cors());
 
 var TokenService = require('./services/TokenService');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,POST");
+  next();
+});
+
 app.post('/avalanche/price/usdt', (req, res) => {
   try {
     TokenService.getPrice(
