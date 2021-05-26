@@ -23,6 +23,6 @@ app.get('/', (req, res) => {
   res.send("Welcome to avalanche-price-api by JamesMartin-Ta");
 });
 
-app.listen(8080, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Serveur à l'écoute");
 });
