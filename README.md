@@ -4,7 +4,7 @@
 
 ### Description
 
-Simple API to get some Avalanche token prices
+Simple API to get some Avalanche token prices in USDT
 
 ---
 
