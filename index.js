@@ -19,6 +19,10 @@ app.post('/avalanche/price/usdt', (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send("Welcome to avalanche-price-api by JamesMartin-Ta");
+});
+
 app.listen(8080, () => {
   console.log("Serveur à l'écoute");
 });
