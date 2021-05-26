@@ -12,11 +12,11 @@ app.put('/avalanche/price/usdt', cors(), (req, res) => {
       req.body.targetTokenSymbol,
       req.body.targetTokenAndUSDTPoolABI,
       function (response) {
-        res.status(200).send(response);
+        res.header('Access-Control-Allow-Origin', '*').status(200).send(response);
       }
     );
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).header('Access-Control-Allow-Origin', '*').send(error);
   }
 });
 
