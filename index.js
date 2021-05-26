@@ -5,7 +5,7 @@ app.use(express.json());
 
 app.options('*', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
-  res.status(200).send('');
+  res.status(200).send('OK');
 });
 
 var TokenService = require('./services/TokenService');
