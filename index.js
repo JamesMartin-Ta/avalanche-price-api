@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.post('/avalanche/price/usdt', (req, res) => {
+app.post('/avalanche/price/usdt', cors(), (req, res) => {
   try {
     TokenService.getPrice(
       req.body.targetTokenAddress,
