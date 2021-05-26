@@ -3,25 +3,16 @@ var cors = require('cors');
 const app = express();
 app.use(express.json());
 
-function supportCrossOriginScript(req, res, next) {
-  res.status(200);
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-
-  // res.header("Access-Control-Allow-Headers", "Origin");
-  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  // res.header("Access-Control-Allow-Methods","POST, OPTIONS");
-  // res.header("Access-Control-Allow-Methods","POST, GET, OPTIONS, DELETE, PUT, HEAD");
-  // res.header("Access-Control-Max-Age","1728000");
-  next();
-}
-
-// Support CORS
-app.options('/avalanche/price/usdt', supportCrossOriginScript);
+app.options('/*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.sendStatus(200);
+});
 
 var TokenService = require('./services/TokenService');
 
-app.put('/avalanche/price/usdt', supportCrossOriginScript, (req, res) => {
+app.put('/avalanche/price/usdt', cors(), (req, res) => {
   try {
     TokenService.getPrice(
       req.body.targetTokenAddress,
