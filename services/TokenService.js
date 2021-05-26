@@ -1,6 +1,5 @@
 var Web3 = require('web3');
 var w3 = new Web3('https://api.avax.network/ext/bc/C/rpc');
-var usdtABI = require('../assets/usdtABI.json');
 var erc20ABI = require('../assets/ERC20.json');
 
 module.exports = {
