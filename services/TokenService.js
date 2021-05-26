@@ -4,11 +4,11 @@ var usdtABI = require('../assets/usdtABI.json');
 var erc20ABI = require('../assets/ERC20.json');
 
 module.exports = {
-  getPrice: function (address, callback) {
+  getPrice: function (targetTokenAddress, targetTokenSymbol, targetTokenAndUSDTPoolABI, callback) {
     /* get pool liquidty address */
     let liquidityContract = new w3.eth.Contract(
-      usdtABI,
-      w3.utils.toChecksumAddress(address)
+      targetTokenAndUSDTPoolABI,
+      w3.utils.toChecksumAddress(targetTokenAddress)
     );
 
     /* get reserve of each token of given pool */
@@ -68,7 +68,7 @@ module.exports = {
 
                 /* Return price */
                 let price =
-                  token0symb === 'WAVAX'
+                  token0symb === targetTokenSymbol
                     ? token1reserve /
                       10 ** token1decimals /
                       (token0reserve / 10 ** token0decimals)
@@ -76,11 +76,10 @@ module.exports = {
                       10 ** token0decimals /
                       (token1reserve / 10 ** token1decimals);
 
-                let symb = token0symb === 'WAVAX' ? token1symb : token0symb;
 
                 return callback({
                   price: price,
-                  symbole: symb,
+                  symbole: targetTokenSymbol,
                   date: `${lastUpdateDate}`
                 });
               });
