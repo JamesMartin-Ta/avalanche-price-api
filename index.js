@@ -1,8 +1,8 @@
 const express = require('express');
-var cors = require('cors')
+var cors = require('cors');
 const app = express();
 app.use(express.json());
-app.options('*', cors())
+app.use(cors({ origin: true, credentials: true }));
 
 var TokenService = require('./services/TokenService');
 
