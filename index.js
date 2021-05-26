@@ -11,31 +11,11 @@ app.post('/avalanche/price/usdt', (req, res) => {
       req.body.targetTokenSymbol,
       req.body.targetTokenAndUSDTPoolABI,
       function (response) {
-        res.send(
-          callback(null, {
-            statusCode: 200,
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'text/plain',
-              'Access-Control-Allow-Credentials': true
-            },
-            body: response
-          })
-        );
+        res.status(200).send(response);
       }
     );
   } catch (error) {
-    res.send(
-      callback(null, {
-        statusCode: error.statusCode || 501,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'text/plain',
-          'Access-Control-Allow-Credentials': true
-        },
-        body: error.message
-      })
-    );
+    res.status(500).send(error);
   }
 });
 
